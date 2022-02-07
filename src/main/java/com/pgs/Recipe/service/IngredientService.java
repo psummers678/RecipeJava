@@ -33,7 +33,7 @@ public class IngredientService{
     }
 
     public List<Ingredient> retrieveAll() {
-        return null;
+        return ingredientDao.findAll();
     }
     
 }

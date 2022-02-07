@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import java.util.Random;
 
 import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.service.IngredientService;
@@ -12,7 +11,6 @@ import com.pgs.Recipe.service.IngredientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.event.annotation.BeforeTestMethod;
 
 @SpringBootTest
 class IngredientTest {
@@ -76,7 +74,7 @@ class IngredientTest {
 
     @Test
     void test_IngredientsCanAllBeRetrieved() {
-        Integer randomLength = (int)(10*Math.random())
+        Integer randomLength = (int)(10*Math.random());
         for (Integer i = 0; i < randomLength; i++) {
             ingredientService.create(new Ingredient("name"+i.toString(), 0.05));
         }
