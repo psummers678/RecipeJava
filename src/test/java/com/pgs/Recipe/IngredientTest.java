@@ -18,19 +18,31 @@ class IngredientTest {
 	void test_IngredientCanBeCreated() {
         Ingredient ingredient = new Ingredient();
         ingredientService.create(ingredient);
-        assertTrue(ingredient.getId() > 0);
-
+        assertTrue(ingredient.getIngredientId() > 0);
 	}
 
     @Test
     void test_TwoIngredientsCanBeCreatedWithGeneratedIds() {
         Ingredient ingredient = new Ingredient();
         Ingredient ingredient2 = new Ingredient();
-        
         ingredientService.create(ingredient);
         ingredientService.create(ingredient2);
-        assertTrue(ingredient.getId() != ingredient2.getId());
+        assertTrue(ingredient.getIngredientId() != ingredient2.getIngredientId());
+    }
 
+    @Test
+    void test_IngredientCanBeCreatedWithNameAndPrice(){
+        String ingredientName = "Flour";
+        double price = 0.5;
+        Ingredient ingredient = new Ingredient(ingredientName, price);
+        ingredientService.create(ingredient);
+        assertTrue(ingredient.getIngredientName().equals(ingredientName));
+        assertTrue(ingredient.getPrice() == price);
+    }
+
+    @Test
+    void test_IngredientCanBeUpdated(){
+        
     }
 
 }
