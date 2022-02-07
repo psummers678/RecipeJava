@@ -15,6 +15,10 @@ public class IngredientController {
     @Autowired
     private IngredientService ingredientService;
 
+    @RequestMapping(value = "/ping")
+    public String ping(){
+        return "ping";
+    }
     @RequestMapping(value="/ingredients")
     public List<Ingredient> getAllIngredients(){
         return ingredientService.retrieveAll();
