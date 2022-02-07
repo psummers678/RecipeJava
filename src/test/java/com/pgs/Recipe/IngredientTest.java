@@ -1,5 +1,6 @@
 package com.pgs.Recipe;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.service.IngredientService;
@@ -37,8 +38,8 @@ class IngredientTest {
         double price = 0.5;
         Ingredient ingredient = new Ingredient(ingredientName, price);
         ingredientService.create(ingredient);
-        assertTrue(ingredient.getIngredientName().equals(ingredientName));
-        assertTrue(ingredient.getPrice() == price);
+        assertEquals(ingredient.getIngredientName(),ingredientName);
+        assertEquals(ingredient.getPrice(), price);
     }
 
     @Test
@@ -46,7 +47,7 @@ class IngredientTest {
         Ingredient setupIngredient = new Ingredient("First Ingredient", 0.5);
         ingredientService.create(setupIngredient);
         Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId()).get();
-        assertTrue(retrievedIngredient.equals(setupIngredient));
+        assertEquals(retrievedIngredient, setupIngredient);
     }
 
     @Test
@@ -56,9 +57,17 @@ class IngredientTest {
         String newName = "new name";
         setupIngredient.setIngredientName(newName);
         ingredientService.update(setupIngredient);
-        String retrievedName = ingredientService.retrieveById(setupIngredient.getIngredientId()).get().getIngredientName();
-        assertTrue(newName.equals(retrievedName));
+        Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId()).get();
+        assertEquals(retrievedIngredient, setupIngredient);
+    }
 
+    @Test
+    void test_IngredientCanBeRetrievedByName() {
+        String name = "retrievedName";
+        Ingredient ingredient = new Ingredient(name, 0.5);
+        ingredientService.create(ingredient);
+        Ingredient retrievedIngredient = ingredientService.retrieveByName(name);
+        assertEquals(ingredient, retrievedIngredient);
     }
 
 }
