@@ -14,6 +14,8 @@ class IngredientTest {
 
     @Autowired
     private IngredientService ingredientService;
+
+    
 	@Test
 	void test_IngredientCanBeCreated() {
         Ingredient ingredient = new Ingredient();
@@ -42,7 +44,13 @@ class IngredientTest {
 
     @Test
     void test_IngredientCanBeUpdated(){
-        
+        Ingredient ingredient = new Ingredient("Test", 0.5);
+        ingredientService.create(ingredient);
+        String newName = "new name";
+        ingredient.setIngredientName(newName);
+        ingredientService.update(ingredient);
+        assertTrue(newName.equals(ingredient.getIngredientName()));
+
     }
 
 }
