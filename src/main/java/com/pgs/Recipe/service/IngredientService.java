@@ -1,5 +1,6 @@
 package com.pgs.Recipe.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.pgs.Recipe.model.Ingredient;
@@ -21,6 +22,10 @@ public class IngredientService{
 
     public Optional<Ingredient> retrieveById(long id) {
         return ingredientDao.findById(id);
+    }
+
+    public List<Ingredient> retrieveByName(String name) {
+        return ingredientDao.findByIngredientName(name);
     }
 
     public void update(Ingredient ingredient) {

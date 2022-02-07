@@ -66,7 +66,7 @@ class IngredientTest {
         String name = "retrievedName";
         Ingredient ingredient = new Ingredient(name, 0.5);
         ingredientService.create(ingredient);
-        Ingredient retrievedIngredient = ingredientService.retrieveByName(name);
+        Ingredient retrievedIngredient = ingredientService.retrieveByName(name).get(0);
         assertEquals(ingredient, retrievedIngredient);
     }
 
