@@ -2,6 +2,10 @@ package com.pgs.Recipe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+import java.util.Random;
+
 import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.service.IngredientService;
 
@@ -68,6 +72,17 @@ class IngredientTest {
         ingredientService.create(ingredient);
         Ingredient retrievedIngredient = ingredientService.retrieveByName(name).get(0);
         assertEquals(ingredient, retrievedIngredient);
+    }
+
+    @Test
+    void test_IngredientsCanAllBeRetrieved() {
+        Integer randomLength = (int)(10*Math.random())
+        for (Integer i = 0; i < randomLength; i++) {
+            ingredientService.create(new Ingredient("name"+i.toString(), 0.05));
+        }
+        List<Ingredient> allIngredients = ingredientService.retrieveAll();
+        assertEquals(allIngredients.size(), randomLength);
+        
     }
 
 }
