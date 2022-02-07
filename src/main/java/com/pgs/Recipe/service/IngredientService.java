@@ -31,5 +31,9 @@ public class IngredientService{
     public void update(Ingredient ingredient) {
         ingredientDao.save(ingredient);
     }
+
+    public List<Ingredient> retrieveAll() {
+        return null;
+    }
     
 }
