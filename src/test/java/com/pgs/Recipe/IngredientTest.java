@@ -79,7 +79,7 @@ class IngredientTest {
             ingredientService.create(new Ingredient("name"+i.toString(), 0.05));
         }
         List<Ingredient> allIngredients = ingredientService.retrieveAll();
-        assertEquals(allIngredients.size(), randomLength);
+        assertEquals(allIngredients.size(), randomLength +1);
         
     }
 
