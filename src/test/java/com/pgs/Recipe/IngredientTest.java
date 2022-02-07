@@ -51,9 +51,12 @@ class IngredientTest {
 
     @Test
     void test_IngredientCanBeRetrievedById() {
-        Ingredient retrievedIngredient = ingredientService.retrieveById(1);
+        setupIngredient = new Ingredient("First Ingredient", 0.5);
+        ingredientService.create(setupIngredient);
+        Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId()).get();
         assertTrue(retrievedIngredient.equals(setupIngredient));
     }
+
     @Test
     void test_IngredientCanBeUpdated(){
         Ingredient ingredient = new Ingredient("Test", 0.5);

@@ -1,5 +1,7 @@
 package com.pgs.Recipe.service;
 
+import java.util.Optional;
+
 import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.repository.IngredientDao;
 
@@ -15,6 +17,13 @@ public class IngredientService{
     public void create(Ingredient ingredient) {
         ingredientDao.save(ingredient);
 
+    }
+
+    public Optional<Ingredient> retrieveById(long id) {
+        return ingredientDao.findById(id);
+    }
+
+    public void update(Ingredient ingredient) {
     }
     
 }
