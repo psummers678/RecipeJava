@@ -7,6 +7,8 @@ import com.pgs.Recipe.service.IngredientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +30,11 @@ public class IngredientController {
     @RequestMapping(value = "/ingredients/{id}")
     public Ingredient getIngredientById(@PathVariable("id") Long id) {
         return ingredientService.retrieveById(id).get();
+    }
+
+    @PostMapping(value = "/ingredients/{id}")
+    public void updateIngredientById(@RequestBody Ingredient updatedIngredient){
+        ingredientService.update(updatedIngredient);
+
     }
 }
