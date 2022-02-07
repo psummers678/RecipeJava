@@ -22,6 +22,7 @@ public class IngredientController {
     public String ping(){
         return "ping";
     }
+    
     @RequestMapping(value="/ingredients")
     public List<Ingredient> getAllIngredients(){
         return ingredientService.retrieveAll();
@@ -36,5 +37,10 @@ public class IngredientController {
     public void updateIngredientById(@RequestBody Ingredient updatedIngredient){
         ingredientService.update(updatedIngredient);
 
+    }
+
+    @PostMapping(value = "/ingredients")
+    public void createIngredient(@RequestBody Ingredient newIngredient) {
+        ingredientService.create(newIngredient);
     }
 }
