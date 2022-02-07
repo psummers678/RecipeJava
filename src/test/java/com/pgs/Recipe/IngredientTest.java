@@ -15,14 +15,6 @@ class IngredientTest {
     @Autowired
     private IngredientService ingredientService;
 
-    private Ingredient setupIngredient;
-
-    @BeforeTestMethod
-    void setup() {
-        setupIngredient = new Ingredient("First Ingredient", 0.5);
-        ingredientService.create(setupIngredient);
-    }
-
 	@Test
 	void test_IngredientCanBeCreated() {
         Ingredient ingredient = new Ingredient();
@@ -51,7 +43,7 @@ class IngredientTest {
 
     @Test
     void test_IngredientCanBeRetrievedById() {
-        setupIngredient = new Ingredient("First Ingredient", 0.5);
+        Ingredient setupIngredient = new Ingredient("First Ingredient", 0.5);
         ingredientService.create(setupIngredient);
         Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId()).get();
         assertTrue(retrievedIngredient.equals(setupIngredient));
@@ -59,12 +51,13 @@ class IngredientTest {
 
     @Test
     void test_IngredientCanBeUpdated(){
-        Ingredient ingredient = new Ingredient("Test", 0.5);
-        ingredientService.create(ingredient);
+        Ingredient setupIngredient = new Ingredient("First Ingredient", 0.5);
+        ingredientService.create(setupIngredient);
         String newName = "new name";
-        ingredient.setIngredientName(newName);
-        ingredientService.update(ingredient);
-        assertTrue(newName.equals(ingredient.getIngredientName()));
+        setupIngredient.setIngredientName(newName);
+        ingredientService.update(setupIngredient);
+        String retrievedName = ingredientService.retrieveById(setupIngredient.getIngredientId()).get().getIngredientName();
+        assertTrue(newName.equals(retrievedName));
 
     }
 
