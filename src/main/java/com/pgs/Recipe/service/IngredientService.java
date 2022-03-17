@@ -21,8 +21,8 @@ public class IngredientService{
 
     }
 
-    public Optional<Ingredient> retrieveById(long id) {
-        return ingredientDao.findById(id);
+    public Ingredient retrieveById(long id) {
+        return ingredientDao.findById(id).get();
     }
 
     public List<Ingredient> retrieveByName(String name) {
@@ -37,8 +37,8 @@ public class IngredientService{
         return ingredientDao.findAll();
     }
 
-    public List<Ingredient> retrieveAllByFoodType(FoodType meat) {
-        return null;
+    public List<Ingredient> retrieveAllByFoodType(FoodType foodType) {
+        return ingredientDao.findByFoodType(foodType);
     }
     
 }

@@ -110,4 +110,10 @@ public class Ingredient {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Ingredient [foodType=" + foodType + ", ingredientId=" + ingredientId + ", ingredientName="
+                + ingredientName + ", price=" + price + "]";
+    }
+
 }

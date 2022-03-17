@@ -52,7 +52,7 @@ class IngredientTest {
     void test_IngredientCanBeRetrievedById() {
         Ingredient setupIngredient = new Ingredient("First Ingredient", 0.5, "Test", 5, ShelfLifeUnit.DAYS, StorageType.FRIDGE, FoodType.MEAT);
         ingredientService.create(setupIngredient);
-        Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId()).get();
+        Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId());
         assertEquals(retrievedIngredient, setupIngredient);
     }
 
@@ -63,7 +63,7 @@ class IngredientTest {
         String newName = "new name";
         setupIngredient.setIngredientName(newName);
         ingredientService.update(setupIngredient);
-        Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId()).get();
+        Ingredient retrievedIngredient = ingredientService.retrieveById(setupIngredient.getIngredientId());
         assertEquals(retrievedIngredient, setupIngredient);
     }
 
@@ -90,10 +90,8 @@ class IngredientTest {
     @Test
     void test_thatAnIngredientCanBeRetrievedByFoodType(){
         List<Ingredient> expected = new ArrayList<Ingredient> (); 
-        Ingredient firstIngredient = new Ingredient("Steak", 0.5, "Tescos", 6, ShelfLifeUnit.DAYS, StorageType.FRIDGE, FoodType.MEAT);
-        Ingredient secondIngredient = new Ingredient("Sausage", 1.5, "Butchers", 3, ShelfLifeUnit.DAYS, StorageType.FRIDGE, FoodType.MEAT);
-        ingredientService.create(firstIngredient);
-        ingredientService.create(secondIngredient);
+        Ingredient firstIngredient = ingredientService.retrieveById(2);
+        Ingredient secondIngredient = ingredientService.retrieveById(4);
         expected.add(firstIngredient);
         expected.add(secondIngredient);
         List<Ingredient> retrieved = ingredientService.retrieveAllByFoodType(FoodType.MEAT);

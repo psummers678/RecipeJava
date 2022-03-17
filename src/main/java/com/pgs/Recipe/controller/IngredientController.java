@@ -30,7 +30,7 @@ public class IngredientController {
     
     @RequestMapping(value = "/ingredients/{id}")
     public Ingredient getIngredientById(@PathVariable("id") Long id) {
-        return ingredientService.retrieveById(id).get();
+        return ingredientService.retrieveById(id);
     }
 
     @PostMapping(value = "/ingredients/{id}")
