@@ -106,7 +106,7 @@ class IngredientTest {
         Ingredient secondIngredient = ingredientService.retrieveById(4);
         expected.add(firstIngredient);
         expected.add(secondIngredient);
-        List<Ingredient> retrieved = ingredientService.searchIngredientsByName("eak");
+        List<Ingredient> retrieved = ingredientService.searchIngredientsByFoodName("eak");
         assertEquals(expected, retrieved);
 
     }
