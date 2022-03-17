@@ -98,4 +98,16 @@ class IngredientTest {
         assertEquals(expected, retrieved);
 
     }
+
+    @Test
+    void test_thatAnIngredientCanBeSearchedByName(){
+        List<Ingredient> expected = new ArrayList<Ingredient>();
+        Ingredient firstIngredient = ingredientService.retrieveById(2);
+        Ingredient secondIngredient = ingredientService.retrieveById(4);
+        expected.add(firstIngredient);
+        expected.add(secondIngredient);
+        List<Ingredient> retrieved = ingredientService.searchIngredientsByName("eak");
+        assertEquals(expected, retrieved);
+
+    }
 }
