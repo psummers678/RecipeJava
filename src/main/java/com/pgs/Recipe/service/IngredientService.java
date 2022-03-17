@@ -3,6 +3,7 @@ package com.pgs.Recipe.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.pgs.Recipe.model.FoodType;
 import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.repository.IngredientDao;
 
@@ -34,6 +35,10 @@ public class IngredientService{
 
     public List<Ingredient> retrieveAll() {
         return ingredientDao.findAll();
+    }
+
+    public List<Ingredient> retrieveAllByFoodType(FoodType meat) {
+        return null;
     }
     
 }
