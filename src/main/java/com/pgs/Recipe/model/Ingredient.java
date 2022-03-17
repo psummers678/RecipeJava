@@ -2,6 +2,8 @@ package com.pgs.Recipe.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,10 +23,30 @@ public class Ingredient {
     @Column 
     private double price;
 
-    public Ingredient(String ingredientName, double price) {
+    @Column
+    private String shopName;
+
+    @Column
+    private long shelfLife;
+
+    @Enumerated(EnumType.STRING)
+    private ShelfLifeUnit shelfLifeUnit;
+
+    @Enumerated(EnumType.STRING)
+    private StorageType storageType;
+
+    @Enumerated(EnumType.STRING)
+    private FoodType foodType;
+
+    public Ingredient(String ingredientName, double price, String string, long shelfLife, ShelfLifeUnit days, StorageType fridge, FoodType meat) {
         super();
         this.ingredientName = ingredientName;
         this.price = price;
+        this.shopName = shopName;
+        this.shelfLifeUnit = shelfLifeUnit;
+        this.shelfLife = shelfLife;
+        this.storageType = storageType;
+        this.foodType = foodType;
     }
 
     public Ingredient() {

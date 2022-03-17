@@ -1,0 +1,80 @@
+What do I want to do:
+
+Recipes:
+See price of a meal based on ingredients (Updates based on ingredient updates) (How to handle spices etc)
+Save Recipes
+Update a Recipe
+Search Recipes based on duration and ease
+Have a rating
+
+Want to be able to look at all my recipes
+Search my Recipes based on name
+Search my Recipes based on ingredients
+search based on rating or difficulty etc
+(Future) Search my Recipes based on tags(Origin, flavours etc)
+
+Meal Plan
+create a list of Meals and generate a shopping list
+estimated Price (Take into account shared ingredients?? Future)
+
+Ingredients:
+Search Ingredients for info
+See price of ingredient 
+See which shop etc
+See duration of storage?
+See storage type (Fridge Freezer Shelf - Enum??)
+See food type - Veg Meat Fruit etc
+Search based on locations 
+seach based on shop
+
+Shops:
+Search Based on type (Butchers vs supermarket etc)
+See shop details such as location etc
+
+========================
+
+Meal Plan (Dependent on user??)
+---------
+- recipes: List<Recipe> 
+- estimatedCost: float?
+- ingredientList: List<Ingredient> # Calculated
+
+**Methods**
++ getters+setters
++ updateEstimatedCost (Watcher + Observer? )
++ updateIngredientList (Watcher + Observer? )
+
+
+Recipe
+-------
+Fields
+-RecipeId
+-RecipeName
+-RecipeDuration (m)
+-Steps (Block or List???)
+-Ingredients = {Ingredient, amount, unit} => Ingredient Requirement (One Recipe -> Many IngredientRequirements) 
+-Rating
+-Difficulty (Enum)
+-Tags??? = List<Tag> (Future Proof for)
+Methods
++getters & setters
++getTotalCost
++getAllIngredients
+
+
+IngredientRequirement (Unique if held by different recipes + id) Use a map instead
+--------------------
+- IngredientRequirementId
+- Ingredient -> Ingredient (Each One Ingredient has many IngredientRequirements)
+- Unit: String? (Pinch / tsp etc)
+- calculatedCost (How to handle unit conversion)
+
+
+Ingredient 
+------------
+-IngredientId
+-IngredredientName
+-Shop  (Best Single Shop to get an item vs all?? tbc)
+-ShelfLife
+-StorageType
+-PricePerUnit
