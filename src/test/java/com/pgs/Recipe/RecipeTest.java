@@ -3,6 +3,13 @@ package com.pgs.Recipe;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.util.HashMap;
+
+import javax.persistence.EntityManager;
+
+import com.pgs.Recipe.model.Difficulty;
+import com.pgs.Recipe.model.Ingredient;
+import com.pgs.Recipe.model.Rating;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.service.RecipeService;
 
@@ -16,6 +23,9 @@ public class RecipeTest {
     
     @Autowired
     private RecipeService recipeService;
+    @Autowired
+    private EntityManager entityManager;
+    
     private Recipe retrievedRecipe;
     
     @BeforeEach
@@ -43,5 +53,18 @@ public class RecipeTest {
     void test_thatARecipeCanBeRetrievedById(){
         retrievedRecipe = recipeService.retrieveById(1);
         assertEquals(1, retrievedRecipe.getRecipeId());
+    }
+
+    @Test
+    void test_thatARecipeCanBeUpdated() {
+        String originalName = "Original";
+        String updatedName = "update";
+        Recipe originalRecipe = new Recipe(originalName,5,"sdklfjd\nsldfjls",new HashMap<Ingredient,String>(), Rating.FOUR, Difficulty.THREE);
+        recipeService.createRecipe(originalRecipe);
+        originalRecipe.setRecipeName(updatedName);
+        recipeService.updateRecipe(originalRecipe);
+        retrievedRecipe = recipeService.retrieveById(originalRecipe.getRecipeId());
+        assertEquals(updatedName, retrievedRecipe.getRecipeName());
+
     }
 }

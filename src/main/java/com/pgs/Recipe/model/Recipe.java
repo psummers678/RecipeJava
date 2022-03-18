@@ -27,7 +27,7 @@ public class Recipe {
     private String recipeName;
 
     @Column
-    private Long recipeDurationMins;
+    private long recipeDurationMins;
 
     @Lob
     @Column
@@ -46,7 +46,7 @@ public class Recipe {
     private Difficulty difficulty;
 
     
-    public Recipe(String recipeName, Long recipeDurationMins, String recipeBody,
+    public Recipe(String recipeName, long recipeDurationMins, String recipeBody,
             Map<Ingredient, String> ingredientRequirements, Rating rating, Difficulty difficulty) {
         this.recipeName = recipeName;
         this.recipeDurationMins = recipeDurationMins;
@@ -124,7 +124,7 @@ public class Recipe {
         result = prime * result + ((ingredientRequirements == null) ? 0 : ingredientRequirements.hashCode());
         result = prime * result + ((rating == null) ? 0 : rating.hashCode());
         result = prime * result + ((recipeBody == null) ? 0 : recipeBody.hashCode());
-        result = prime * result + ((recipeDurationMins == null) ? 0 : recipeDurationMins.hashCode());
+        result = prime * result + (int) (recipeDurationMins ^ (recipeDurationMins >>> 32));
         result = prime * result + (int) (recipeId ^ (recipeId >>> 32));
         result = prime * result + ((recipeName == null) ? 0 : recipeName.hashCode());
         return result;
@@ -146,20 +146,14 @@ public class Recipe {
                 return false;
         } else if (!ingredientRequirements.equals(other.ingredientRequirements))
             return false;
-        if (rating == null) {
-            if (other.rating != null)
-                return false;
-        } else if (!rating.equals(other.rating))
+        if (rating != other.rating)
             return false;
         if (recipeBody == null) {
             if (other.recipeBody != null)
                 return false;
         } else if (!recipeBody.equals(other.recipeBody))
             return false;
-        if (recipeDurationMins == null) {
-            if (other.recipeDurationMins != null)
-                return false;
-        } else if (!recipeDurationMins.equals(other.recipeDurationMins))
+        if (recipeDurationMins != other.recipeDurationMins)
             return false;
         if (recipeId != other.recipeId)
             return false;
@@ -173,10 +167,9 @@ public class Recipe {
 
     @Override
     public String toString() {
-        return "Recipe [difficulty=" + difficulty + ", ingredientRequirements=" + ingredientRequirements + ", rating="
-                + rating + ", recipeBody=" + recipeBody + ", recipeDurationMins=" + recipeDurationMins + ", recipeId="
+        return "Recipe [difficulty=" + difficulty + ", rating="
+                + rating +  ", recipeDurationMins=" + recipeDurationMins + ", recipeId="
                 + recipeId + ", recipeName=" + recipeName + "]";
     }
-    
-    
+
 }
