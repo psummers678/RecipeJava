@@ -24,9 +24,9 @@ public class RecipeIngredientTests {
     IngredientService ingredientService;
     
     @Test
-    void test_thatAnIngredientCanRetrieveItsIngredients() {
+    void test_thatAnRecipeCanRetrieveItsIngredients() {
         Recipe retrievedRecipe = recipeService.retrieveById(1);
-        Map<Ingredient, String> ingredientRequirements = retrievedRecipe.getIngredientRequirements();
+        Map<Ingredient, String> ingredientRequirements = recipeService.retrieveIngredientRequirementsByRecipe(retrievedRecipe);
         assertTrue(ingredientRequirements.size()!= 0);
     
     }
