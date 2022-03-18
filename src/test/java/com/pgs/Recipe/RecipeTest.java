@@ -3,7 +3,9 @@ package com.pgs.Recipe;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -23,9 +25,7 @@ public class RecipeTest {
     
     @Autowired
     private RecipeService recipeService;
-    @Autowired
-    private EntityManager entityManager;
-    
+
     private Recipe retrievedRecipe;
     
     @BeforeEach
@@ -65,6 +65,14 @@ public class RecipeTest {
         recipeService.updateRecipe(originalRecipe);
         retrievedRecipe = recipeService.retrieveById(originalRecipe.getRecipeId());
         assertEquals(updatedName, retrievedRecipe.getRecipeName());
+    }
+
+    @Test
+    void test_thatARecipeCanBeRetrievedByName(){
+        Recipe expectedRecipe = recipeService.retrieveById(1);
+        String recipeName = expectedRecipe.getRecipeName();
+        List<Recipe> retrievedRecipes = recipeService.retrieveByName(recipeName);
+        assertEquals(expectedRecipe, retrievedRecipes);
 
     }
 }

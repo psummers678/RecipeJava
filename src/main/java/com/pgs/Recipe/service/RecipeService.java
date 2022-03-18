@@ -1,5 +1,7 @@
 package com.pgs.Recipe.service;
 
+import java.util.List;
+
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.repository.RecipeDao;
 
@@ -22,5 +24,9 @@ public class RecipeService {
 
     public void updateRecipe(Recipe recipe) {
         recipeDao.save(recipe);
+    }
+
+    public List<Recipe> retrieveByName(String recipeName) {
+        return null;
     }
 }
