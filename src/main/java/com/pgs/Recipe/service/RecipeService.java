@@ -16,7 +16,7 @@ public class RecipeService {
         recipeDao.save(newRecipe);
     }
 
-    public Recipe retrieveById(int i) {
-        return new Recipe();
+    public Recipe retrieveById(long id) {
+        return recipeDao.getById(id);
     }
 }
