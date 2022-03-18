@@ -1,7 +1,5 @@
 package com.pgs.Recipe.service;
 
-import java.util.List;
-
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.repository.RecipeDao;
 
@@ -27,6 +25,6 @@ public class RecipeService {
     }
 
     public Recipe retrieveByName(String recipeName) {
-        return null;
+        return recipeDao.findByRecipeName(recipeName);
     }
 }

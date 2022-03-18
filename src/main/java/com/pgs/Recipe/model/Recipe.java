@@ -121,9 +121,7 @@ public class Recipe {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((difficulty == null) ? 0 : difficulty.hashCode());
-        result = prime * result + ((ingredientRequirements == null) ? 0 : ingredientRequirements.hashCode());
         result = prime * result + ((rating == null) ? 0 : rating.hashCode());
-        result = prime * result + ((recipeBody == null) ? 0 : recipeBody.hashCode());
         result = prime * result + (int) (recipeDurationMins ^ (recipeDurationMins >>> 32));
         result = prime * result + (int) (recipeId ^ (recipeId >>> 32));
         result = prime * result + ((recipeName == null) ? 0 : recipeName.hashCode());
@@ -141,17 +139,7 @@ public class Recipe {
         Recipe other = (Recipe) obj;
         if (difficulty != other.difficulty)
             return false;
-        if (ingredientRequirements == null) {
-            if (other.ingredientRequirements != null)
-                return false;
-        } else if (!ingredientRequirements.equals(other.ingredientRequirements))
-            return false;
         if (rating != other.rating)
-            return false;
-        if (recipeBody == null) {
-            if (other.recipeBody != null)
-                return false;
-        } else if (!recipeBody.equals(other.recipeBody))
             return false;
         if (recipeDurationMins != other.recipeDurationMins)
             return false;
