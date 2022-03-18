@@ -1,6 +1,6 @@
 package com.pgs.Recipe.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import com.pgs.Recipe.model.Recipe;
@@ -20,7 +20,7 @@ public class RecipeService {
     }
 
     public Recipe retrieveById(long id) {
-        return recipeDao.findById(id).get();
+        return recipeDao.getById(id);
     }
 
     public void updateRecipe(Recipe recipe) {
