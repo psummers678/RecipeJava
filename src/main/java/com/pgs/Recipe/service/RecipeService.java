@@ -32,6 +32,6 @@ public class RecipeService {
     }
     
     public List<Recipe> retrieveAllRecipes() {
-        return new ArrayList<Recipe>();
+        return recipeDao.findAll();
     }
 }
