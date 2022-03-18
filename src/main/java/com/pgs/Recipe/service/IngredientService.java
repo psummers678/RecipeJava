@@ -42,7 +42,7 @@ public class IngredientService{
     }
     
     public List<Ingredient> searchIngredientsByIngredientName(String searchString) {
-        return ingredientDao.searchByFoodName(searchString);
+        return ingredientDao.searchByIngredientName(searchString);
     }
     
 }
