@@ -45,7 +45,7 @@ public class IngredientController {
     }
 
     @RequestMapping(value = "/ingredients/search/{name}")
-    public void searchIngredientsByName(@PathVariable("name") String name){
+    public List<Ingredient> searchIngredientsByName(@PathVariable("name") String name){
         return ingredientService.searchByIngredientName(name);
     }
 }

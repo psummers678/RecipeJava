@@ -41,7 +41,7 @@ public class IngredientService{
         return ingredientDao.findByFoodType(foodType);
     }
     
-    public List<Ingredient> searchIngredientsByIngredientName(String searchString) {
+    public List<Ingredient> searchByIngredientName(String searchString) {
         return ingredientDao.searchByIngredientName(searchString);
     }
     
