@@ -100,6 +100,6 @@ public class RecipeTest {
     void test_thatRecipesCanBeRetrievedByRating() {
         expectedRecipes.add(recipeService.retrieveById(2));
         retrievedRecipes = recipeService.retrieveRecipesByRating(Rating.FOUR);
-        assertEquals(expectedRecipes, retrievedRecipe);
+        assertEquals(expectedRecipes, retrievedRecipes);
     }
 }

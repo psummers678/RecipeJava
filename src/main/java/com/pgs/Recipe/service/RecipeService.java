@@ -36,7 +36,7 @@ public class RecipeService {
         return recipeDao.findAll();
     }
 
-    public List<Recipe> retrieveRecipesByRating(Rating four) {
-        return null;
+    public List<Recipe> retrieveRecipesByRating(Rating rating) {
+        return recipeDao.findByRating(rating);
     }
 }
