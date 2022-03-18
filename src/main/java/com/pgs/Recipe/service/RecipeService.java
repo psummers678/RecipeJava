@@ -1,5 +1,8 @@
 package com.pgs.Recipe.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.repository.RecipeDao;
 
@@ -26,5 +29,9 @@ public class RecipeService {
 
     public Recipe retrieveByName(String recipeName) {
         return recipeDao.findByRecipeName(recipeName);
+    }
+    
+    public List<Recipe> retrieveAllRecipes() {
+        return new ArrayList<Recipe>();
     }
 }

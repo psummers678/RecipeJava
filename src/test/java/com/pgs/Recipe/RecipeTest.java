@@ -3,6 +3,7 @@ package com.pgs.Recipe;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -74,5 +75,14 @@ public class RecipeTest {
         Recipe retrievedRecipe = recipeService.retrieveByName(recipeName);
         assertEquals(expectedRecipe, retrievedRecipe );
 
+    }
+
+    @Test
+    void test_thatAllRecipesCanBeRetrieved() {
+        List<Recipe> expectedRecipes = new ArrayList<Recipe>();
+        expectedRecipes.add(recipeService.retrieveById(1));
+        expectedRecipes.add(recipeService.retrieveById(2));
+        List<Recipe> retrievedRecipes = recipeService.retrieveAllRecipes();
+        assertEquals(expectedRecipes, retrievedRecipes);
     }
 }
