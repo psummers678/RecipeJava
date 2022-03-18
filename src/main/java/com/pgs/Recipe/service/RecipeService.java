@@ -43,7 +43,7 @@ public class RecipeService {
     }
 
     public List<Recipe> retrieveRecipesByDifficulty(Difficulty difficulty) {
-        return new ArrayList<Recipe>();
+        return recipeDao.findByDifficulty(difficulty);
     }
 
 }
