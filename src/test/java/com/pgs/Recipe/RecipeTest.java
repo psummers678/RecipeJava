@@ -4,11 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.persistence.EntityManager;
 
 import com.pgs.Recipe.model.Difficulty;
 import com.pgs.Recipe.model.Ingredient;
@@ -16,7 +13,6 @@ import com.pgs.Recipe.model.Rating;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.service.RecipeService;
 
-import org.assertj.core.internal.Diff;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,4 +106,5 @@ public class RecipeTest {
         retrievedRecipes = recipeService.retrieveRecipesByDifficulty(Difficulty.TWO);
         assertEquals(expectedRecipes, retrievedRecipes);
     }
+
 }
