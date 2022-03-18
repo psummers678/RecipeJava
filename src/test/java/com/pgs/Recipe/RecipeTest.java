@@ -38,4 +38,6 @@ public class RecipeTest {
         recipeService.createRecipe(secondRecipe);
         assertEquals(firstRecipe.getRecipeId()+1, secondRecipe.getRecipeId());
     }
+
+    
 }

@@ -8,4 +8,7 @@ public enum ShelfLifeUnit {
         this.unit = unit;
     }
     
+    public String getUnit(){
+        return unit;
+    }
 }
