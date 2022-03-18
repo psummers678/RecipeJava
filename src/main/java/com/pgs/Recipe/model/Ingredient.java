@@ -77,15 +77,60 @@ public class Ingredient {
         this.price = price;
     }
 
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public long getShelfLife() {
+        return shelfLife;
+    }
+
+    public void setShelfLife(long shelfLife) {
+        this.shelfLife = shelfLife;
+    }
+
+    public ShelfLifeUnit getShelfLifeUnit() {
+        return shelfLifeUnit;
+    }
+
+    public void setShelfLifeUnit(ShelfLifeUnit shelfLifeUnit) {
+        this.shelfLifeUnit = shelfLifeUnit;
+    }
+
+    public StorageType getStorageType() {
+        return storageType;
+    }
+
+    public void setStorageType(StorageType storageType) {
+        this.storageType = storageType;
+    }
+
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodType foodType) {
+        this.foodType = foodType;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + ((foodType == null) ? 0 : foodType.hashCode());
         result = prime * result + (int) (ingredientId ^ (ingredientId >>> 32));
         result = prime * result + ((ingredientName == null) ? 0 : ingredientName.hashCode());
         long temp;
         temp = Double.doubleToLongBits(price);
         result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (shelfLife ^ (shelfLife >>> 32));
+        result = prime * result + ((shelfLifeUnit == null) ? 0 : shelfLifeUnit.hashCode());
+        result = prime * result + ((shopName == null) ? 0 : shopName.hashCode());
+        result = prime * result + ((storageType == null) ? 0 : storageType.hashCode());
         return result;
     }
 
@@ -98,6 +143,8 @@ public class Ingredient {
         if (getClass() != obj.getClass())
             return false;
         Ingredient other = (Ingredient) obj;
+        if (foodType != other.foodType)
+            return false;
         if (ingredientId != other.ingredientId)
             return false;
         if (ingredientName == null) {
@@ -107,13 +154,20 @@ public class Ingredient {
             return false;
         if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
             return false;
+        if (shelfLife != other.shelfLife)
+            return false;
+        if (shelfLifeUnit != other.shelfLifeUnit)
+            return false;
+        if (shopName == null) {
+            if (other.shopName != null)
+                return false;
+        } else if (!shopName.equals(other.shopName))
+            return false;
+        if (storageType != other.storageType)
+            return false;
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Ingredient [foodType=" + foodType + ", ingredientId=" + ingredientId + ", ingredientName="
-                + ingredientName + ", price=" + price + "]";
-    }
+
 
 }
