@@ -15,4 +15,8 @@ public class RecipeService {
     public void createRecipe(Recipe newRecipe) {
         recipeDao.save(newRecipe);
     }
+
+    public Recipe retrieveById(int i) {
+        return new Recipe();
+    }
 }
