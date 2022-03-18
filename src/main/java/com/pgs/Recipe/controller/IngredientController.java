@@ -43,4 +43,9 @@ public class IngredientController {
     public void createIngredient(@RequestBody Ingredient newIngredient) {
         ingredientService.create(newIngredient);
     }
+
+    @RequestMapping(value = "/ingredients/search/{name}")
+    public void searchIngredientsByName(@PathVariable("name") String name){
+        return ingredientService.searchByFoodName(name);
+    }
 }

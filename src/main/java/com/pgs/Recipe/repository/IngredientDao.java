@@ -17,5 +17,5 @@ public interface IngredientDao extends JpaRepository<Ingredient, Long> {
     List<Ingredient> findByFoodType(FoodType foodType);
     
     @Query("select i from Ingredient i where lower(i.ingredientName) like concat('%', lower(:searchString),'%')")
-    List<Ingredient> searchByFoodName(@Param("searchString") String searchString);
+    List<Ingredient> searchByIngredientName(@Param("searchString") String searchString);
 }
