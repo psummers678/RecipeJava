@@ -16,6 +16,7 @@ import com.pgs.Recipe.model.Rating;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.service.RecipeService;
 
+import org.assertj.core.internal.Diff;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +101,13 @@ public class RecipeTest {
     void test_thatRecipesCanBeRetrievedByRating() {
         expectedRecipes.add(recipeService.retrieveById(2));
         retrievedRecipes = recipeService.retrieveRecipesByRating(Rating.FOUR);
+        assertEquals(expectedRecipes, retrievedRecipes);
+    }
+
+    @Test
+    void test_thatRecipesCanBeRetrievedByDifficulty(){
+        expectedRecipes.add(recipeService.retrieveById(1));
+        retrievedRecipes = recipeService.retrieveRecipesByDifficulty(Difficulty.TWO);
         assertEquals(expectedRecipes, retrievedRecipes);
     }
 }

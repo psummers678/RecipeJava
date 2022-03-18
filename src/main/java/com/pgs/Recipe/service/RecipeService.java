@@ -1,8 +1,10 @@
 package com.pgs.Recipe.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.pgs.Recipe.model.Difficulty;
 import com.pgs.Recipe.model.Rating;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.repository.RecipeDao;
@@ -39,4 +41,9 @@ public class RecipeService {
     public List<Recipe> retrieveRecipesByRating(Rating rating) {
         return recipeDao.findByRating(rating);
     }
+
+    public List<Recipe> retrieveRecipesByDifficulty(Difficulty difficulty) {
+        return new ArrayList<Recipe>();
+    }
+
 }
