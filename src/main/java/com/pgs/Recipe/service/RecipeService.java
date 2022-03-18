@@ -20,6 +20,7 @@ public class RecipeService {
         return recipeDao.findById(id).get();
     }
 
-    public void updateRecipe(Recipe originalRecipe) {
+    public void updateRecipe(Recipe recipe) {
+        recipeDao.save(recipe);
     }
 }
