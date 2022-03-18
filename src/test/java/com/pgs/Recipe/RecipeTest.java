@@ -39,5 +39,9 @@ public class RecipeTest {
         assertEquals(firstRecipe.getRecipeId()+1, secondRecipe.getRecipeId());
     }
 
-    
+    @Test
+    void test_thatARecipeCanBeRetrievedById(){
+        retrievedRecipe = recipeService.retrieveById(1);
+        assertEquals(1, retrievedRecipe.getRecipeId());
+    }
 }
