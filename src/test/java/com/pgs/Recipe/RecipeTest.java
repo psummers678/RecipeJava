@@ -56,8 +56,19 @@ public class RecipeTest {
     }
 
     @Test
+    void test_thatAllRecipesCanBeRetrieved() {
+        //TODO Fix DataBase Drop and Restart between tests for mvn test etc
+        expectedRecipes.add(recipeService.retrieveById(1));
+        expectedRecipes.add(recipeService.retrieveById(2));
+        List<Recipe> retrievedRecipes = recipeService.retrieveAllRecipes();
+        assertEquals(expectedRecipes, retrievedRecipes);
+        
+    }
+
+
+    @Test
     void test_thatARecipeCanBeRetrievedByIdWithoutLazyLoading() {
-        Recipe newRecipe = new Recipe("recipeName",5,"hflsdh\nnsdf", new HashMap<Ingredient, String>(), Rating.FOUR, Difficulty.THREE);
+        Recipe newRecipe = new Recipe("recipeName",5,"hflsdh\nnsdf", new HashMap<Ingredient, String>(), Rating.ONE, Difficulty.ONE);
         recipeService.createRecipe(newRecipe);
         long id = newRecipe.getRecipeId();
         retrievedRecipe = recipeService.retrieveById(id);
@@ -68,7 +79,7 @@ public class RecipeTest {
     void test_thatARecipeCanBeUpdated() {
         String originalName = "Original";
         String updatedName = "update";
-        Recipe originalRecipe = new Recipe(originalName,5,"sdklfjd\nsldfjls",new HashMap<Ingredient,String>(), Rating.FOUR, Difficulty.THREE);
+        Recipe originalRecipe = new Recipe(originalName,5,"sdklfjd\nsldfjls",new HashMap<Ingredient,String>(), Rating.ONE, Difficulty.THREE);
         recipeService.createRecipe(originalRecipe);
         originalRecipe.setRecipeName(updatedName);
         recipeService.updateRecipe(originalRecipe);
@@ -84,15 +95,6 @@ public class RecipeTest {
         assertEquals(expectedRecipe, retrievedRecipe );
 
     }
-
-    @Test
-    void test_thatAllRecipesCanBeRetrieved() {
-        expectedRecipes.add(recipeService.retrieveById(1));
-        expectedRecipes.add(recipeService.retrieveById(2));
-        List<Recipe> retrievedRecipes = recipeService.retrieveAllRecipes();
-        assertEquals(expectedRecipes, retrievedRecipes);
-    }
-
     @Test
     void test_thatRecipesCanBeRetrievedByRating() {
         expectedRecipes.add(recipeService.retrieveById(2));

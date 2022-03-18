@@ -1,12 +1,8 @@
 package com.pgs.Recipe.service;
 
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.pgs.Recipe.model.Difficulty;
-import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.model.Rating;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.repository.RecipeDao;
