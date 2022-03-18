@@ -26,7 +26,7 @@ public class RecipeService {
         recipeDao.save(recipe);
     }
 
-    public List<Recipe> retrieveByName(String recipeName) {
+    public Recipe retrieveByName(String recipeName) {
         return null;
     }
 }

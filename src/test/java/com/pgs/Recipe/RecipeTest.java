@@ -71,8 +71,8 @@ public class RecipeTest {
     void test_thatARecipeCanBeRetrievedByName(){
         Recipe expectedRecipe = recipeService.retrieveById(1);
         String recipeName = expectedRecipe.getRecipeName();
-        List<Recipe> retrievedRecipes = recipeService.retrieveByName(recipeName);
-        assertEquals(expectedRecipe, retrievedRecipes);
+        Recipe retrievedRecipe = recipeService.retrieveByName(recipeName);
+        assertEquals(expectedRecipe, retrievedRecipe );
 
     }
 }
