@@ -1,6 +1,5 @@
 package com.pgs.Recipe.model;
 
-import java.sql.Blob;
 import java.util.Map;
 
 import javax.persistence.CollectionTable;
@@ -12,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.SequenceGenerator;
 
@@ -29,8 +29,9 @@ public class Recipe {
     @Column
     private Long recipeDurationMins;
 
+    @Lob
     @Column
-    private Blob recipeBody;
+    private String recipeBody;
 
     @ElementCollection
     @CollectionTable
@@ -45,7 +46,7 @@ public class Recipe {
     private Difficulty difficulty;
 
     
-    public Recipe(String recipeName, Long recipeDurationMins, Blob recipeBody,
+    public Recipe(String recipeName, Long recipeDurationMins, String recipeBody,
             Map<Ingredient, String> ingredientRequirements, Rating rating, Difficulty difficulty) {
         this.recipeName = recipeName;
         this.recipeDurationMins = recipeDurationMins;
@@ -83,11 +84,11 @@ public class Recipe {
         this.recipeDurationMins = recipeDurationMins;
     }
 
-    public Blob getRecipeBody() {
+    public String getRecipeBody() {
         return recipeBody;
     }
 
-    public void setRecipeBody(Blob recipeBody) {
+    public void setRecipeBody(String recipeBody) {
         this.recipeBody = recipeBody;
     }
 
