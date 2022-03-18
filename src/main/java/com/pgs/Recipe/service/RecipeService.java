@@ -3,6 +3,7 @@ package com.pgs.Recipe.service;
 
 import java.util.List;
 
+import com.pgs.Recipe.model.Rating;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.repository.RecipeDao;
 
@@ -33,5 +34,9 @@ public class RecipeService {
     
     public List<Recipe> retrieveAllRecipes() {
         return recipeDao.findAll();
+    }
+
+    public List<Recipe> retrieveRecipesByRating(Rating four) {
+        return null;
     }
 }

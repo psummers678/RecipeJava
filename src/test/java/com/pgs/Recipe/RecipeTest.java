@@ -28,10 +28,12 @@ public class RecipeTest {
     private RecipeService recipeService;
 
     private Recipe retrievedRecipe;
-    
+    private List<Recipe> retrievedRecipes;
+    private List<Recipe> expectedRecipes;
+
     @BeforeEach
     void setUp() {
-
+        expectedRecipes = new ArrayList<>();
     }
 
     @Test
@@ -88,10 +90,16 @@ public class RecipeTest {
 
     @Test
     void test_thatAllRecipesCanBeRetrieved() {
-        List<Recipe> expectedRecipes = new ArrayList<Recipe>();
         expectedRecipes.add(recipeService.retrieveById(1));
         expectedRecipes.add(recipeService.retrieveById(2));
         List<Recipe> retrievedRecipes = recipeService.retrieveAllRecipes();
         assertEquals(expectedRecipes, retrievedRecipes);
+    }
+
+    @Test
+    void test_thatRecipesCanBeRetrievedByRating() {
+        expectedRecipes.add(recipeService.retrieveById(2));
+        retrievedRecipes = recipeService.retrieveRecipesByRating(Rating.FOUR);
+        assertEquals(expectedRecipes, retrievedRecipe);
     }
 }
