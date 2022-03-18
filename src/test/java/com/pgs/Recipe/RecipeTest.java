@@ -57,6 +57,15 @@ public class RecipeTest {
     }
 
     @Test
+    void test_thatARecipeCanBeRetrievedByIdWithoutLazyLoading() {
+        Recipe newRecipe = new Recipe("recipeName",5,"hflsdh\nnsdf", new HashMap<Ingredient, String>(), Rating.FOUR, Difficulty.THREE);
+        recipeService.createRecipe(newRecipe);
+        long id = newRecipe.getRecipeId();
+        retrievedRecipe = recipeService.retrieveById(id);
+        assertEquals(newRecipe, retrievedRecipe);
+    }
+
+    @Test
     void test_thatARecipeCanBeUpdated() {
         String originalName = "Original";
         String updatedName = "update";
