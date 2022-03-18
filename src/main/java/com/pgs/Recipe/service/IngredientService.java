@@ -1,7 +1,6 @@
 package com.pgs.Recipe.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.pgs.Recipe.model.FoodType;
 import com.pgs.Recipe.model.Ingredient;

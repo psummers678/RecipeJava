@@ -7,4 +7,8 @@ public enum StorageType {
     private StorageType(String storageType) {
         this.storageType = storageType;
     }
+
+    public String getStorageType() {
+        return storageType;
+    }
 }

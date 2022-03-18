@@ -38,7 +38,7 @@ public class Ingredient {
     @Enumerated(EnumType.STRING)
     private FoodType foodType;
 
-    public Ingredient(String ingredientName, double price, String string, long shelfLife, ShelfLifeUnit days, StorageType fridge, FoodType meat) {
+    public Ingredient(String ingredientName, double price, String shopName, long shelfLife, ShelfLifeUnit shelfLifeUnit, StorageType storageType, FoodType foodType) {
         super();
         this.ingredientName = ingredientName;
         this.price = price;
@@ -166,6 +166,13 @@ public class Ingredient {
         if (storageType != other.storageType)
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingredient [foodType=" + foodType + ", ingredientId=" + ingredientId + ", ingredientName="
+                + ingredientName + ", price=" + price + ", shelfLife=" + shelfLife + ", shelfLifeUnit=" + shelfLifeUnit
+                + ", shopName=" + shopName + ", storageType=" + storageType + "]";
     }
 
 
