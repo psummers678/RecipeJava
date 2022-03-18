@@ -22,12 +22,15 @@ public class RecipeIngredientTests {
 
     @Autowired
     IngredientService ingredientService;
-    
+
+    private Ingredient retrievedIngredient;
     private Recipe retrievedRecipe;
 
     @BeforeEach
     void setUp() {
+        retrievedIngredient = ingredientService.retrieveById(1);
         retrievedRecipe = recipeService.retrieveById(1);
+
     }
     @Test
     void test_thatAnRecipeCanRetrieveItsIngredients() {
@@ -35,4 +38,11 @@ public class RecipeIngredientTests {
         Map<Ingredient, String> ingredientRequirements = retrievedRecipe.getIngredientRequirements();
         assertTrue(ingredientRequirements.size()!= 0);
     }
+    
+    @Test
+    void test_thatAnIngredientRequirementCanAccessTheVolume() {
+        String retrievedVolume = retrievedRecipe.getIngredientRequirements().get(retrievedIngredient);
+        assertTrue("5tsp".equals(retrievedVolume));
+    }
+
 }
