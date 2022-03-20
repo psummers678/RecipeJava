@@ -1,5 +1,6 @@
 package com.pgs.Recipe;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -21,6 +22,11 @@ public class MealPlanTest {
     void test_thatAllMealPlansCanBeRetrievedFromDB() {
         List<MealPlan> allMealPlans = mealPlanService.retrieveAll();
         assertTrue(allMealPlans.size() > 0);
+    }
 
+    @Test
+    void test_thatASingularMealPlanCanBeRetrievedById() {
+        MealPlan retrievedMealPlan = mealPlanService.retrieveById(1);
+        assertEquals(5.59, retrievedMealPlan.getEstimatedCost());
     }
 }
