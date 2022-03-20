@@ -20,7 +20,7 @@ public class MealPlanService {
     }
 
     public MealPlan retrieveById(long id) {
-        return new MealPlan();
+        return mealPlanDao.findById(id).get();
     }
     
 }
