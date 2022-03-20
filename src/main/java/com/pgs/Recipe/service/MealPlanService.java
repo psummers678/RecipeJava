@@ -24,6 +24,7 @@ public class MealPlanService {
     }
 
     public void create(MealPlan newMealPlan) {
+        mealPlanDao.save(newMealPlan);
     }
     
 }

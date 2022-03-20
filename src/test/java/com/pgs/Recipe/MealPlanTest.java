@@ -43,6 +43,6 @@ public class MealPlanTest {
         plannedRecipes.add(recipeService.retrieveById(1));
         MealPlan newMealPlan = new MealPlan(3.56, plannedRecipes);
         mealPlanService.create(newMealPlan);
-        assertTrue(mealPlanService.retrieveAll().contains(newMealPlan));
+        assertTrue(newMealPlan.getMealPlanId()>0);
     }
 }
