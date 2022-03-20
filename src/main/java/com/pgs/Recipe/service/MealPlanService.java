@@ -22,5 +22,8 @@ public class MealPlanService {
     public MealPlan retrieveById(long id) {
         return mealPlanDao.findById(id).get();
     }
+
+    public void create(MealPlan newMealPlan) {
+    }
     
 }
