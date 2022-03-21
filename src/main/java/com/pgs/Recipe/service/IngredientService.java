@@ -39,7 +39,10 @@ public class IngredientService{
     }
 
     public boolean update(Ingredient ingredient) {
-        ingredientDao.save(ingredient);
+        if (ingredientDao.findById(ingredient.getIngredientId()).isPresent()){
+            ingredientDao.save(ingredient);
+            return true;
+        }
         return false;
     }
 
