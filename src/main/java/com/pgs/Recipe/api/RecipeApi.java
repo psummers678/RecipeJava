@@ -5,7 +5,6 @@ import java.util.List;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.service.RecipeService;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +50,7 @@ public class RecipeApi {
 
     @PostMapping(value ="/CreateRecipe")
     public void createRecipe(@RequestBody Recipe newRecipe) {
+
         recipeService.createRecipe(newRecipe);
     }
 }

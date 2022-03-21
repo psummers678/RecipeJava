@@ -125,4 +125,11 @@ public class RecipeTest {
         assertFalse(recipeService.updateRecipe(newRecipe));
         
     }
+
+    @Test
+    void test_thatARecipeCantBeCreatedIfNameIsAlreadyUsed() {
+        String recipeName = recipeService.retrieveById(1).getRecipeName();
+        Recipe newRecipe = new Recipe(recipeName, 5, "recipeBodlksjdy", new HashMap<>(), Rating.FIVE, Difficulty.TWO);
+        assertFalse(recipeService.createRecipe(newRecipe));
+    }
 }

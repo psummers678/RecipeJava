@@ -16,8 +16,9 @@ public class RecipeService {
     @Autowired
     private RecipeDao recipeDao;
     
-    public void createRecipe(Recipe newRecipe) {
+    public boolean createRecipe(Recipe newRecipe) {
         recipeDao.save(newRecipe);
+        return true;
     }
 
     public Recipe retrieveById(long id) {
