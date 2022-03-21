@@ -26,22 +26,30 @@ public class RecipeApi {
         return ResponseEntity.ok("ping");
     }
 
-    @RequestMapping(value = "/recipes")
+    @RequestMapping(value = "/AllRecipes")
     public ResponseEntity<List<Recipe>> getAllRecipes() {
         return ResponseEntity.ok(recipeService.retrieveAllRecipes());
     }
 
-    @RequestMapping(value = "/recipes/{id}")
-    public Recipe getRecipeById(@PathVariable("id") Long id) {
-        return recipeService.retrieveById(id);
-    }
+    @RequestMapping(value = "/GetRecipe/{id}")
+    public ResponseEntity<Recipe> getRecipeById(@PathVariable("id") Long id) {
+        Recipe retrievedRecipe = recipeService.retrieveById(id);
+        if (retrievedRecipe != null) {
+            return ResponseEntity.ok(retrievedRecipe);
+        }
+        return ResponseEntity.notFound().build();
+}
+
     
-    @PostMapping(value = "/recipe/{id}")
+    @PostMapping(value = "/UpdateRecipe/{id}")
     public void updateRecipeId(@RequestBody Recipe updatedRecipe) {
-        recipeService.updateRecipe(updatedRecipe);
+        if (recipeService.updateRecipe(updatedRecipe)) {
+            ResponseEntity.ok(updatedRecipe);
+        }
+        ResponseEntity.notFound().build();
     }
 
-    @PostMapping(value ="/recipes")
+    @PostMapping(value ="/CreateRecipe")
     public void createRecipe(@RequestBody Recipe newRecipe) {
         recipeService.createRecipe(newRecipe);
     }

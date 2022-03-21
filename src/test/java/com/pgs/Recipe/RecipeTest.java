@@ -2,6 +2,7 @@ package com.pgs.Recipe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -112,4 +113,8 @@ public class RecipeTest {
         assertEquals(expectedRecipes, retrievedRecipes);
     }
 
+    @Test
+    void test_thatARecipeCanNotBeRetrievedIfDoesntExist(){
+        assertNull(recipeService.retrieveById(99));
+    }
 }
