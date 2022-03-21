@@ -31,7 +31,10 @@ public class IngredientService{
     }
 
     public Ingredient retrieveById(long id) {
-        return ingredientDao.findById(id).get();
+        if (ingredientDao.findById(id).isPresent()){
+            return ingredientDao.findById(id).get();
+        }
+        return null;
     }
 
     public List<Ingredient> retrieveByName(String name) {

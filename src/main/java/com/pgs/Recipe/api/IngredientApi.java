@@ -14,39 +14,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/v1/ingredient")
 public class IngredientApi{
 
     @Autowired
     private IngredientService ingredientService;
 
     @RequestMapping(value = "/ping")
-    public String ping(){
-        return "ping";
+    public ResponseEntity<String> ping(){
+        return ResponseEntity.ok("ping");
     }
     
-    @RequestMapping(value="/ingredients")
-    public  List<Ingredient> getAllIngredients(){
-        return ingredientService.retrieveAll();
+    @RequestMapping(value="/AllIngredients")
+    public ResponseEntity<List<Ingredient>> getAllIngredients(){
+        return ResponseEntity.ok(ingredientService.retrieveAll());
     }
     
-    @RequestMapping(value = "/ingredients/{id}")
-    public Ingredient getIngredientById(@PathVariable("id") Long id) {
-        return ingredientService.retrieveById(id);
+    @RequestMapping(value = "/GetIngredient/{id}")
+    public ResponseEntity<Ingredient> getIngredientById(@PathVariable("id") Long id) {
+        Ingredient retrievedIngredient = ingredientService.retrieveById(id);
+        if (retrievedIngredient == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ingredientService.retrieveById(id));
     }
 
-    @PostMapping(value = "/ingredients/{id}")
-    public void updateIngredientById(@RequestBody Ingredient updatedIngredient){
-        ingredientService.update(updatedIngredient);
+    @PostMapping(value = "/UpdateIngredient/{id}")
+    public ResponseEntity<Ingredient> updateIngredientById(@PathVariable("id") long id, @RequestBody Ingredient updatedIngredient){
+        if (ingredientService.update(updatedIngredient)) {
+            return ResponseEntity.ok(updatedIngredient);
+        }
+        return ResponseEntity.notFound().build();
 
     }
 
-    @PostMapping(value = "/ingredients")
-    public void createIngredient(@RequestBody Ingredient newIngredient) {
-        ingredientService.create(newIngredient);
+    @PostMapping(value = "/CreateIngredient")
+    public ResponseEntity<Ingredient> createIngredient( @RequestBody Ingredient newIngredient) {
+        if (ingredientService.create(newIngredient)){
+            return ResponseEntity.ok(newIngredient);
+        }
+        return ResponseEntity.badRequest().build();
     }
 
-    @RequestMapping(value = "/ingredients/search/{name}")
-    public List<Ingredient> searchIngredientsByName(@PathVariable("name") String name){
-        return ingredientService.searchByIngredientName(name);
+    @RequestMapping(value = "/SearchIngredient/{name}")
+    public ResponseEntity<List<Ingredient>> searchIngredientsByName(@PathVariable("name") String name){
+        return ResponseEntity.ok(ingredientService.searchByIngredientName(name));
     }
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.service.RecipeService;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,14 +21,14 @@ public class RecipeApi {
     @Autowired
     private RecipeService recipeService; 
 
-    @RequestMapping(value = "/recipe/ping")
-    public String ping() {
-        return "ping";
+    @RequestMapping(value = "/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("ping");
     }
 
     @RequestMapping(value = "/recipes")
-    public List<Recipe> getAllRecipes() {
-        return recipeService.retrieveAllRecipes();
+    public ResponseEntity<List<Recipe>> getAllRecipes() {
+        return ResponseEntity.ok(recipeService.retrieveAllRecipes());
     }
 
     @RequestMapping(value = "/recipes/{id}")
