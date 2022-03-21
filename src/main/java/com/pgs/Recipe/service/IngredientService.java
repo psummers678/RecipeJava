@@ -17,7 +17,6 @@ public class IngredientService{
 
     public void create(Ingredient ingredient) {
         ingredientDao.save(ingredient);
-
     }
 
     public Ingredient retrieveById(long id) {

@@ -6,17 +6,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
+
 import com.pgs.Recipe.model.FoodType;
 import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.model.ShelfLifeUnit;
 import com.pgs.Recipe.model.StorageType;
 import com.pgs.Recipe.service.IngredientService;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
 @SpringBootTest
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 class IngredientTest {
 
     @Autowired
@@ -87,17 +90,17 @@ class IngredientTest {
         
     }
 
-    // @Test
-    // void test_thatAnIngredientCanBeRetrievedByFoodType(){
-    //     List<Ingredient> expected = new ArrayList<Ingredient> (); 
-    //     Ingredient firstIngredient = ingredientService.retrieveById(2);
-    //     Ingredient secondIngredient = ingredientService.retrieveById(4);
-    //     expected.add(firstIngredient);
-    //     expected.add(secondIngredient);
-    //     List<Ingredient> retrieved = ingredientService.retrieveAllByFoodType(FoodType.MEAT);
-    //     assertEquals(expected, retrieved);
+     @Test
+     void test_thatAnIngredientCanBeRetrievedByFoodType(){
+         List<Ingredient> expected = new ArrayList<Ingredient> (); 
+         Ingredient firstIngredient = ingredientService.retrieveById(2);
+         Ingredient secondIngredient = ingredientService.retrieveById(4);
+         expected.add(firstIngredient);
+         expected.add(secondIngredient);
+         List<Ingredient> retrieved = ingredientService.retrieveAllByFoodType(FoodType.MEAT);
+         assertEquals(expected, retrieved);
 
-    // }
+     }
 
     @Test
     void test_thatAnIngredientCanBeSearchedByName(){

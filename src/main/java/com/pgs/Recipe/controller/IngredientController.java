@@ -6,6 +6,7 @@ import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.service.IngredientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ public class IngredientController {
     }
     
     @RequestMapping(value="/ingredients")
-    public List<Ingredient> getAllIngredients(){
+    public  List<Ingredient> getAllIngredients(){
         return ingredientService.retrieveAll();
     }
     

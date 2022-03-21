@@ -17,8 +17,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 @SpringBootTest
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class RecipeTest {
     
     @Autowired
@@ -55,15 +58,14 @@ public class RecipeTest {
         assertEquals(1, retrievedRecipe.getRecipeId());
     }
 
-    // @Test
-    // void test_thatAllRecipesCanBeRetrieved() {
-    //     //TODO Fix DataBase Drop and Restart between tests for mvn test etc
-    //     expectedRecipes.add(recipeService.retrieveById(1));
-    //     expectedRecipes.add(recipeService.retrieveById(2));
-    //     List<Recipe> retrievedRecipes = recipeService.retrieveAllRecipes();
-    //     assertEquals(expectedRecipes, retrievedRecipes);
+     @Test
+     void test_thatAllRecipesCanBeRetrieved() {
+         expectedRecipes.add(recipeService.retrieveById(1));
+         expectedRecipes.add(recipeService.retrieveById(2));
+         List<Recipe> retrievedRecipes = recipeService.retrieveAllRecipes();
+         assertEquals(expectedRecipes, retrievedRecipes);
         
-    // }
+     }
 
 
     @Test
@@ -95,6 +97,7 @@ public class RecipeTest {
         assertEquals(expectedRecipe, retrievedRecipe );
 
     }
+    
     @Test
     void test_thatRecipesCanBeRetrievedByRating() {
         expectedRecipes.add(recipeService.retrieveById(2));
