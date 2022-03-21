@@ -87,17 +87,17 @@ class IngredientTest {
         
     }
 
-    @Test
-    void test_thatAnIngredientCanBeRetrievedByFoodType(){
-        List<Ingredient> expected = new ArrayList<Ingredient> (); 
-        Ingredient firstIngredient = ingredientService.retrieveById(2);
-        Ingredient secondIngredient = ingredientService.retrieveById(4);
-        expected.add(firstIngredient);
-        expected.add(secondIngredient);
-        List<Ingredient> retrieved = ingredientService.retrieveAllByFoodType(FoodType.MEAT);
-        assertEquals(expected, retrieved);
+    // @Test
+    // void test_thatAnIngredientCanBeRetrievedByFoodType(){
+    //     List<Ingredient> expected = new ArrayList<Ingredient> (); 
+    //     Ingredient firstIngredient = ingredientService.retrieveById(2);
+    //     Ingredient secondIngredient = ingredientService.retrieveById(4);
+    //     expected.add(firstIngredient);
+    //     expected.add(secondIngredient);
+    //     List<Ingredient> retrieved = ingredientService.retrieveAllByFoodType(FoodType.MEAT);
+    //     assertEquals(expected, retrieved);
 
-    }
+    // }
 
     @Test
     void test_thatAnIngredientCanBeSearchedByName(){
