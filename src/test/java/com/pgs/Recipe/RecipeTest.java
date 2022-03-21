@@ -1,6 +1,7 @@
 package com.pgs.Recipe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -116,5 +117,12 @@ public class RecipeTest {
     @Test
     void test_thatARecipeCanNotBeRetrievedIfDoesntExist(){
         assertNull(recipeService.retrieveById(99));
+    }
+
+    @Test
+    void test_thatARecipeThatDoesntExistCanNotBeUpdated(){
+        Recipe newRecipe = new Recipe("recipeName", 50, "recipeBodjlkjy", new HashMap<>(), Rating.FIVE, Difficulty.FOUR);
+        assertFalse(recipeService.updateRecipe(newRecipe));
+        
     }
 }

@@ -21,12 +21,18 @@ public class RecipeService {
     }
 
     public Recipe retrieveById(long id) {
-        return recipeDao.findById(id).get();
+        if (recipeDao.findById(id).isPresent()){
+            return recipeDao.findById(id).get();
+        }
+        return null;
     }
 
     public boolean updateRecipe(Recipe recipe) {
-        recipeDao.save(recipe);
-        return true;
+        if (recipeDao.findById(recipe.getRecipeId()).isPresent()){
+            recipeDao.save(recipe);
+            return true;
+        }
+        return false;
     }
 
     public Recipe retrieveByName(String recipeName) {
