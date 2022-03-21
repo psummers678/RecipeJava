@@ -132,4 +132,9 @@ public class RecipeTest {
         Recipe newRecipe = new Recipe(recipeName, 5, "recipeBodlksjdy", new HashMap<>(), Rating.FIVE, Difficulty.TWO);
         assertFalse(recipeService.createRecipe(newRecipe));
     }
+
+    @Test
+    void test_thatNullIsReturnedIfNamedRecipeDoesntExist() {
+        assertNull(recipeService.retrieveByName("This is a nonsenseName"));
+    }
 }

@@ -37,9 +37,17 @@ public class RecipeApi {
             return ResponseEntity.ok(retrievedRecipe);
         }
         return ResponseEntity.notFound().build();
-}
+    }
 
-    
+    @RequestMapping(value = "GetRecipeByName/{name}")
+    public ResponseEntity<Recipe> getRecipeByName(@PathVariable("name") String name) {
+        Recipe retrievedRecipe = recipeService.retrieveByName(name);
+        if (retrievedRecipe != null) {
+            ResponseEntity.ok(retrievedRecipe);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @PostMapping(value = "/UpdateRecipe/{id}")
     public void updateRecipeId(@RequestBody Recipe updatedRecipe) {
         if (recipeService.updateRecipe(updatedRecipe)) {
@@ -50,7 +58,6 @@ public class RecipeApi {
 
     @PostMapping(value ="/CreateRecipe")
     public void createRecipe(@RequestBody Recipe newRecipe) {
-
         recipeService.createRecipe(newRecipe);
     }
 }
