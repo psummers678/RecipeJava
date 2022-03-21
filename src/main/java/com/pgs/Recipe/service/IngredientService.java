@@ -15,8 +15,9 @@ public class IngredientService{
     @Autowired
     private IngredientDao ingredientDao;
 
-    public void create(Ingredient ingredient) {
+    public Boolean create(Ingredient ingredient) {
         ingredientDao.save(ingredient);
+        return true;
     }
 
     public Ingredient retrieveById(long id) {

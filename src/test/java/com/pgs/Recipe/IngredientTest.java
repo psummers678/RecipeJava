@@ -1,7 +1,9 @@
 package com.pgs.Recipe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.booleanThat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -111,6 +113,15 @@ class IngredientTest {
         expected.add(secondIngredient);
         List<Ingredient> retrieved = ingredientService.searchByIngredientName("eak");
         assertEquals(expected, retrieved);
+    }
+
+    @Test
+    void test_thatAnIngredientCannotBeCreatedIfItAlreadyExists() {
+        String newIngredientName = ingredientService.retrieveById(1).getIngredientName();
+        Ingredient newIngredient = new Ingredient(newIngredientName, 5.56, "Tescos", 5, ShelfLifeUnit.DAYS, StorageType.FRIDGE, FoodType.FRUIT);
+        Boolean result = ingredientService.create(newIngredient);
+        assertFalse(result);
 
     }
+
 }
