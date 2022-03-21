@@ -3,7 +3,6 @@ package com.pgs.Recipe;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.booleanThat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,4 +123,10 @@ class IngredientTest {
 
     }
 
+    @Test
+    void test_thatAnIngredientCannotBeUpdatedIfItAlreadyExists(){
+        Ingredient newIngredient = new Ingredient("HelloFresh", 5, "shopName", 5, ShelfLifeUnit.DAYS, StorageType.NORMAL, FoodType.FRUIT);
+        Boolean result = ingredientService.update(newIngredient);
+        assertFalse(result);
+    }
 }

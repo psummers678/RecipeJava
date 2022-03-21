@@ -6,6 +6,8 @@ import com.pgs.Recipe.model.FoodType;
 import com.pgs.Recipe.model.Ingredient;
 import com.pgs.Recipe.repository.IngredientDao;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +17,16 @@ public class IngredientService{
     @Autowired
     private IngredientDao ingredientDao;
 
-    public Boolean create(Ingredient ingredient) {
+    private final static Logger LOGGER = LogManager.getLogger(IngredientService.class);
+
+    public boolean create(Ingredient ingredient) {
         String ingredientName = ingredient.getIngredientName();
         if ( retrieveByName(ingredientName).isEmpty()) {
             ingredientDao.save(ingredient);
+            LOGGER.info("Ingredient Created");
             return true;
         }
+        LOGGER.info("Ingredient not created");
         return false;
     }
 
@@ -32,8 +38,9 @@ public class IngredientService{
         return ingredientDao.findByIngredientName(name);
     }
 
-    public void update(Ingredient ingredient) {
+    public boolean update(Ingredient ingredient) {
         ingredientDao.save(ingredient);
+        return false;
     }
 
     public List<Ingredient> retrieveAll() {
