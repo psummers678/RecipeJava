@@ -1,4 +1,4 @@
-package com.pgs.Recipe.controller;
+package com.pgs.Recipe.api;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class IngredientController {
+public class IngredientApi{
 
     @Autowired
     private IngredientService ingredientService;
