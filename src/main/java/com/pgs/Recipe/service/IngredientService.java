@@ -16,8 +16,12 @@ public class IngredientService{
     private IngredientDao ingredientDao;
 
     public Boolean create(Ingredient ingredient) {
-        ingredientDao.save(ingredient);
-        return true;
+        String ingredientName = ingredient.getIngredientName();
+        if ( retrieveByName(ingredientName).isEmpty()) {
+            ingredientDao.save(ingredient);
+            return true;
+        }
+        return false;
     }
 
     public Ingredient retrieveById(long id) {
