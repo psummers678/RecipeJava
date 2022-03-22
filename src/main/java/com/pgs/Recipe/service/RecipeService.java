@@ -17,11 +17,11 @@ public class RecipeService {
     private RecipeDao recipeDao;
     
     public boolean createRecipe(Recipe newRecipe) {
-        if (recipeDao.findById(newRecipe.getRecipeId()).isPresent()) {
-            recipeDao.save(newRecipe);
-            return true;
+        if (recipeDao.findById(newRecipe.getRecipeId()).isPresent() || recipeDao.findByRecipeName(newRecipe.getRecipeName()) != null) {
+                return false;
         }
-        return false;
+        recipeDao.save(newRecipe);
+        return true;
     }
 
     public Recipe retrieveById(long id) {
