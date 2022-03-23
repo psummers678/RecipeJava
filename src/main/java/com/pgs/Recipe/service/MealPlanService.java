@@ -1,13 +1,12 @@
 package com.pgs.Recipe.service;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.pgs.Recipe.model.MealPlan;
-import com.pgs.Recipe.repository.MealPlanDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.pgs.Recipe.model.MealPlan;
+import com.pgs.Recipe.repository.MealPlanDao;
 
 @Service
 public class MealPlanService {

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 @Entity 
 public class Ingredient {
 
@@ -169,10 +171,9 @@ public class Ingredient {
     }
 
     @Override
+    @JsonValue
     public String toString() {
-        return "Ingredient [foodType=" + foodType + ", ingredientId=" + ingredientId + ", ingredientName="
-                + ingredientName + ", price=" + price + ", shelfLife=" + shelfLife + ", shelfLifeUnit=" + shelfLifeUnit
-                + ", shopName=" + shopName + ", storageType=" + storageType + "]";
+        return ingredientId+ ","+ ingredientName;
     }
 
 

@@ -16,6 +16,8 @@ import javax.persistence.Lob;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 public class Recipe {
 
@@ -38,8 +40,9 @@ public class Recipe {
     @CollectionTable
     @MapKeyColumn
     @Column
+    @JsonSerialize(keyUsing = IngredientSerializer.class)
     private Map<Ingredient, String> ingredientRequirements;
-
+    
     @Enumerated(EnumType.STRING)
     private Rating rating;
 
