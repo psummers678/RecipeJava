@@ -170,12 +170,4 @@ public class Ingredient {
         return true;
     }
 
-    @Override
-    @JsonValue
-    public String toString() {
-        return ingredientId+ ","+ ingredientName;
-    }
-
-
-
 }
