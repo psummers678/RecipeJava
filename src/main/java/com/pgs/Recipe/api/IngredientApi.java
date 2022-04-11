@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/ingredient")
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://172.31.2.122:3000")
 public class IngredientApi{
 
     @Autowired

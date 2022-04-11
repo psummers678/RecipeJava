@@ -5,6 +5,8 @@ import java.util.List;
 import com.pgs.Recipe.model.Recipe;
 import com.pgs.Recipe.service.RecipeService;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/recipe")
-@CrossOrigin(origins="http://localhost:3000")
+@CrossOrigin(origins="http://172.31.2.122:3000")
 public class RecipeApi {
 
+	private final static Logger LOGGER = LogManager.getLogger();
+	
     @Autowired
     private RecipeService recipeService; 
 
@@ -58,8 +62,9 @@ public class RecipeApi {
         ResponseEntity.notFound().build();
     }
 
-    @PostMapping(value ="/CreateRecipe")
+    @PostMapping(value ="/CreateRecipe", consumes = {"application/json"})
     public void createRecipe(@RequestBody Recipe newRecipe) {
+    	LOGGER.error("OBJECT PROVIDED IS :" + newRecipe);
         recipeService.createRecipe(newRecipe);
     }
 }

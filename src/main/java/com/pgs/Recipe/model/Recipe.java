@@ -59,8 +59,21 @@ public class Recipe {
         this.rating = rating;
         this.difficulty = difficulty;
     }
+    
+    
 
-    public Recipe() {
+    public Recipe(String recipeName, long recipeDurationMins, String recipeBody, Rating rating, Difficulty difficulty) {
+		super();
+		this.recipeName = recipeName;
+		this.recipeDurationMins = recipeDurationMins;
+		this.recipeBody = recipeBody;
+		this.rating = rating;
+		this.difficulty = difficulty;
+	}
+
+
+
+	public Recipe() {
         super();
     }
 
